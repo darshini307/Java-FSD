@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Learn HTML</title>
+    </head>
+    <style>
+        *{
+            font-family: 'Courier New', Courier, monospace;
+
+        }
+        body{
+            background-color: honeydew;
+        }
+        #p1{
+            color: green;
+        }
+        .c1{
+            color: greenyellow;
+        }
+        header,footer{
+            text-align: center;
+            background-color: darkgreen;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            font-size: 30px;
+            font-family: cursive;
+        }
+        input,textarea{
+            width: 250px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 2px solid darkcyan;
+        }
+        .container{
+            display: grid;
+            gap: 10px;
+            grid-template-columns: auto;
+            background-color: darkgreen;
+            width: fit-content;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .container div{
+            padding: 10px;
+            display: grid;
+            background-color: whitesmoke;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .flex{
+            display: flex;
+            background-color: darkgreen;
+            justify-content: space-between;
+        }
+        .flex div{
+            background-color: whitesmoke;
+            margin: 20px;
+            padding: 20px;
+            font-size: 24px;
+        }
+    </style>
+    <body>
+        <header>Welcome to HTML5 + CSS</header>
+        <p>This is a paragraph</p>
+        <p id="p1">Id Selector</p>
+        <p class="c1">Class Selector</p>
+        <form>
+            <div class="container">
+                <div><label>Name</label>
+                <input type="text" placeholder="Enter your name"></div>
+                <div><label>Phone Number</label>
+                <input type="Number" placeholder="Enter your phone number"></div>
+                <div><label>DOB</label>
+                <input type="date"></div>
+                <div><label>Email</label>
+                <input type="email" placeholder="Enter your email"></div>
+                <div><label>Address</label>
+                <textarea></textarea></div>
+                <div>
+                    <button onclick="click1()">Onclick</button>
+                </div>
+                <div>
+                    <button ondblclick="click1()">Double Click</button>
+                </div>
+                <div>
+                    <button onmouseover="click1()">Move Hover</button>
+                </div>
+            </div>
+            
+        </form>
+        <h3>Flex</h3>
+        <div class="flex">
+            <div>Item1</div>
+            <div>Item2</div>
+            <div>Item3</div>
+        </div>
+        <br><br>
+        <div class="flex">
+            <div><button onclick="add()">Add</button></div>
+            <div><button onclick="sub()">Subtract</button></div>
+            <div><button onclick="mul()">Multiply</button></div>
+            <div><button onclick="divide()">Divide</button></div>
+        </div>
+        <h2>Calculator</h2>
+        <div class="container">
+            <div>
+                <input type="number" id="num1" placeholder="Enter a number"><br>
+                <input type="number" id="num2" placeholder="Enter a number">
+            </div>
+            <div>
+                <button onclick="addTwoNumbers()">Add</button>
+            </div>
+            <div><button onclick="subTwoNumbers()">Subtract</button></div>
+            <div><button onclick="mulTwoNumbers()">Multiply</button></div>
+            <div><button onclick="divTwoNumbers()">Divide</button></div>
+            <p id="result" style="color: white;font-weight: bold;"></p>
+
+
+        </div>
+        <br>
+        <footer>&copy All rights reserved</footer>
+        <Script>
+            function click1(){
+                alert("Hello");
+            }
+            var n1 = 20;
+            var n2 = 10;
+            function add(){
+                alert(n1+n2);
+            }
+            function sub(){
+                alert(n1-n2);
+            }
+            function mul(){
+                alert(n1*n2);
+            }
+            function divide(){
+                alert(n1/n2);
+            }
+            
+            function addTwoNumbers(){
+                let num1 = document.getElementById("num1").value;
+                let num2 = document.getElementById("num2").value;
+                let result = Number(num1)+Number(num2)
+                document.getElementById("result").textContent="Addition is: "+result;
+            }
+            function subTwoNumbers(){
+                let num1 = document.getElementById("num1").value;
+                let num2 = document.getElementById("num2").value;
+                let result = Number(num1)-Number(num2)
+                document.getElementById("result").textContent="Subtraction is: "+result;
+            }
+            function mulTwoNumbers(){
+                let num1 = document.getElementById("num1").value;
+                let num2 = document.getElementById("num2").value;
+                let result = Number(num1) * Number(num2)
+                document.getElementById("result").textContent="Multiplication: "+result;
+            }
+            function divTwoNumbers(){
+                let num1 = document.getElementById("num1").value;
+                let num2 = document.getElementById("num2").value;
+                let result = Number(num1)/Number(num2)
+                document.getElementById("result").textContent="Divition is: "+result;
+            }
+        </Script>
+    </body>
+</html>

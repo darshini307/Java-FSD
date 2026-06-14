@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add</title>
+    </head>
+    <body>
+    <div class="container">
+        <div><h1>Calculator</h1>
+            <label>First Number</label>
+            <input type="number" placeholder="Enter a number" id="num1">
+
+                <button type="button" onclick="calcSin()">Sin Value</button>
+                <button type="button" onclick="calcCos()">Cos Value</button>
+                <button type="button" onclick="calcLog()">logValue</button>
+                <button type="button" onclick="calcSpiral()">Spiral Matrix</button>
+                <button type="button" onclick="isPerfect()">Perfect? </button>
+
+            <h5 id="result"></h5>
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        async function calcSin(){
+            const degrees = document.getElementById("num1").value;
+            const response = await fetch(`http://localhost:8080/calc/sin/${degrees}`);
+            const text = await response.text();
+            document.getElementById("result").textContent = text;
+        }
+        async function calcCos(){
+            const degrees = document.getElementById("num1").value;
+            const response = await fetch(`http://localhost:8080/calc/cos/${degrees}`);
+            const text = await response.text();
+            document.getElementById("result").textContent = text;
+        }
+        async function calcLog(){
+            const num = document.getElementById("num1").value;
+            const response = await fetch(`http://localhost:8080/calc/log/${num}`);
+            const text = await response.text();
+            document.getElementById("result").textContent = text;
+        }
+        async function calcSpiral(){
+            const response = await fetch(`http://localhost:8080/calc/spiral`);
+            const text = await response.text();
+            document.getElementById("result").textContent = text;
+        }
+        async function isPerfect(){
+            const num = document.getElementById("num1").value;
+            const response = await fetch(`http://localhost:8080/calc/isPerfect/${num}`);
+            const text = await response.text();
+            document.getElementById("result").textContent = text;
+        }
+    </script>
+    <style>
+        body{
+            background-color: azure;
+        }
+        .container{
+            display: flex;
+            grid-template-rows: auto;
+            background-color: lightblue;
+            padding: 10px;
+            width: fit-content;
+            gap:50px;
+        }
+        .container div{
+            display: grid;
+            grid-template-columns: auto;
+            background-color: deepskyblue;
+            padding: 10px;
+            width: fit-content;
+            border: 1px solid darkblue;
+            border-radius: 20px;
+            gap: 10px;
+        }
+        .container div button{
+            background-color: darkblue;
+            color: white;
+            font-weight: bold;
+            width: fit-content;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+    </style>
+    </body>
+</html>

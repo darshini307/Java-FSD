@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Order System</title>
+</head>
+<body>
+<h2>Place an Order</h2>
+<input type="text" id="itemInput" placeholder="Item Name">
+<input type="number" id="qtyInput" placeholder="Quantity">
+<button id="addBtn">Add Order</button>
+
+<hr>
+
+<h2>📋View Orders</h2>
+<button id="viewBtn">Refresh Orders</button>
+<ul id="ordersDisplay"></ul>
+
+<script>
+    const API_URL = "http://localhost:8080/coffee";
+
+    // 1. ADD ORDER (POST Request)
+    document.getElementById("addBtn").addEventListener("click", () => {
+        // Create a regular JavaScript object
+        const dataToSend = {
+            item: document.getElementById("itemInput").value,
+            quantity: parseInt(document.getElementById("qtyInput").value)
+        };
+        fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dataToSend)
+        })
+            .then(response => response.text()) // Wait for text response ("Order received!")
+            .then(msg => {
+                alert(msg);
+                document.getElementById("itemInput").value = "";
+                document.getElementById("qtyInput").value = "";
+            });
+    });
+
+    // 2. VIEW ORDERS (GET Request)
+    document.getElementById("viewBtn").addEventListener("click", () => {
+
+        // Day 9: fetch returns a Promise while waiting for the server
+        fetch(API_URL)
+            .then(response => response.json()) // Day 8 & 9: Parses incoming JSON string back to JS array
+            .then(ordersArray => {
+                const list = document.getElementById("ordersDisplay");
+                list.innerHTML = ""; // Clear old display
+
+                // Loop through the array and add to HTML
+                ordersArray.forEach(order => {
+                    const li = document.createElement("li");
+                    li.textContent = `${order.quantity}x ${order.item}`;
+                    list.appendChild(li);
+                });
+            });
+    });
+</script>
+</body>
+</html>
