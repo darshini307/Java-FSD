@@ -1,0 +1,34 @@
+import logo from './logo.svg';
+import './App.css';
+import React from 'react';
+import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
+import { Home } from './Home';
+import { About } from './About';
+import { Contact } from './Contact';
+import { SignUp } from './SignUp';
+import { LoginHook } from './LoginHook';
+function App() {
+  return (
+    
+      <div style={{textAlign:"center",marginTop:"40px"}}>
+        <h1>Simple Routing Demo</h1>
+        <nav>
+          <Link to="/">Home</Link> |{" "}
+          <Link to="/about">About</Link> |{" "}
+          <Link to="/contact">Contact</Link> |{" "}
+          <Link to="/signup">SignUp</Link> |{" "}
+          <Link to="/login">Login</Link> 
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/login" element={<LoginHook/>}/>
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact/>} />
+        </Routes>
+      </div>
+  
+  );
+}
+
+export default App;
